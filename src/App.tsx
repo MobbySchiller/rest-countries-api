@@ -1,6 +1,11 @@
-const App = () => {
+import { FC } from 'react'
+import Header from './components/Header'
+
+const App: FC = () => {
   return (
-    <div>test</div>
+    <div className='w-full min-h-screen bg-light-background dark:bg-dark-background font-nunito'>
+      <Header />
+    </div>
   )
 }
 
