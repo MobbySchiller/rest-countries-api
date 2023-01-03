@@ -16,7 +16,7 @@ const Header: FC = () => {
         <header
             className='w-full px-2 py-6 bg-light-elements dark:bg-dark-elements'
             style={{ boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }}>
-            <div className='max-w-6xl mx-auto flex justify-between text-light-text dark:text-dark-text'>
+            <div className='max-w-6xl mx-auto flex justify-between'>
                 <h1
                     className='md:text-xl font-extrabold'>
                     Where in the world?

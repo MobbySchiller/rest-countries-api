@@ -18,7 +18,11 @@ module.exports = {
     fontFamily: {
       nunito: ['Nunito Sans', 'sans-serif']
     },
-    extend: {},
+    extend: {
+      aspectRatio: {
+        '3/2': '3 / 2'
+      }
+    },
   },
   plugins: [],
 }
