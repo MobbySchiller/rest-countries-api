@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon as lightMoon } from '@fortawesome/free-regular-svg-icons'
-import { faMoon as darkMoon } from '@fortawesome/free-solid-svg-icons'
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 const Header: FC = () => {
     const [isLightMode, setIsLightMode] = useState<boolean>(true)
@@ -24,10 +23,8 @@ const Header: FC = () => {
                 <button
                     className='font-semibold flex items-center'
                     onClick={handleDisplayMode}>
-                    <FontAwesomeIcon
-                        className='pr-1 md:pr-2'
-                        icon={isLightMode ? lightMoon : darkMoon} />
-                    Dark Mode
+                    {isLightMode ? <LightModeIcon /> : <DarkModeIcon />}
+                    <span className='pl-1'>{isLightMode ? 'Light Mode' : 'Dark Mode'}</span>
                 </button>
             </div>
         </header >

@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const SingleCountry: FC = () => {
 
@@ -9,10 +8,7 @@ const SingleCountry: FC = () => {
             <button
                 className='my-12 px-8 py-2 rounded-md bg-light-elements dark:bg-dark-elements'
                 style={{ boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px' }}>
-                <FontAwesomeIcon
-                    icon={faArrowLeft}
-                    className='pr-3'
-                />
+                <ArrowBackIcon />
                 Back
             </button>
             <div className='md:flex md:gap-20'>
