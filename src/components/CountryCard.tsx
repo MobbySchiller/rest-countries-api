@@ -11,10 +11,6 @@ interface Info {
     }
 }
 
-// interface Flags {
-//     svg: string
-// }
-
 const CountryCard: FC<{ info: Info }> = ({ info }) => {
     const { name, population, region, capital, flags } = info
 

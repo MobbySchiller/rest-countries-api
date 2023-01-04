@@ -1,19 +1,20 @@
-import React, { FC, useState } from 'react'
+import { FC } from 'react'
+import { FilterType } from './SearcherFilter'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 
-
-const Filter: FC = () => {
-    const [selectedRegion, setSelectedRegion] = useState<string>('')
-    const regions: string[] = ['All', 'Africa', 'America', 'Asia', 'Europe', 'Oceania']
+const Filter: FC<{ filter: FilterType }> = ({ filter }) => {
+    const { filterValue, setFilterValue } = filter
+    const regions: string[] = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
     const selectOptions = regions.map(region => (
         <MenuItem key={region} value={region}>{region}</MenuItem>
     ))
 
-    const handleChange = (e: SelectChangeEvent<string>) => {
-        setSelectedRegion(e.target.value)
+    const handleChange = (event: SelectChangeEvent<string>) => {
+        setFilterValue(event.target.value)
     }
 
     return (
@@ -21,7 +22,7 @@ const Filter: FC = () => {
             <FormControl className='w-45'>
                 <Select
                     className='bg-light-elements dark:bg-dark-elements dark:text-dark-text'
-                    value={selectedRegion}
+                    value={filterValue !== '' ? filterValue : ''}
                     onChange={handleChange}
                     displayEmpty
                 >
