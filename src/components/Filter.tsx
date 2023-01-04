@@ -9,7 +9,7 @@ const Filter: FC = () => {
     const regions: string[] = ['All', 'Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
     const selectOptions = regions.map(region => (
-        <MenuItem value={region}>{region}</MenuItem>
+        <MenuItem key={region} value={region}>{region}</MenuItem>
     ))
 
     const handleChange = (e: SelectChangeEvent<string>) => {
