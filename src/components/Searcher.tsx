@@ -7,9 +7,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 const Searcher: FC<{ search: SearchType }> = ({ search }) => {
     const { searchValue, setSearchValue } = search
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(event.target.value)
-    }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value)
 
     return (
         <TextField
