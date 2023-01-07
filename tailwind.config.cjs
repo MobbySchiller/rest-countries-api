@@ -13,7 +13,8 @@ module.exports = {
       'light-text': 'hsl(200, 15%, 8%)',
       'light-elements': 'hsl(0, 0%, 100%)',
       'light-background': 'hsl(0, 0%, 98%)',
-      'light-input': 'hsl(0, 0%, 52%)'
+      'light-border': 'hsl(0, 0%, 70%)',
+      'light-input': 'hsl(0, 0%, 52%)',
     },
     fontFamily: {
       nunito: ['Nunito Sans', 'sans-serif']

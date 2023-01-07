@@ -1,13 +1,18 @@
 import React, { FC } from 'react'
-import { SearchType } from './SearcherFilter';
+import { useShopSelector, useShopDispatch } from '../shop/hooks'
+import { selectorsActions } from '../shop/selectorsSlice';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 
-const Searcher: FC<{ search: SearchType }> = ({ search }) => {
-    const { searchValue, setSearchValue } = search
+const Searcher: FC = () => {
+    const searchValue = useShopSelector(state => state.selectors.search)
+    const dispatch = useShopDispatch()
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value)
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value
+        dispatch(selectorsActions.changeSearch({ value }))
+    }
 
     return (
         <TextField

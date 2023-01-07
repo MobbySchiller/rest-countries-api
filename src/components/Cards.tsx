@@ -1,12 +1,14 @@
 import { FC } from 'react'
+import { useShopSelector } from '../shop/hooks'
 import CountryCard from './CountryCard'
 
-const Cards: FC<{ countriesToDisplay: any }> = ({ countriesToDisplay }) => {
+const Cards: FC = () => {
+    const countriesToDisplay = useShopSelector(state => state.display.display)
 
     const countryCards = countriesToDisplay.map((country: any) => {
-        const { name, population, region, capital, flags } = country
+        const { name, population, region, capital, flag } = country
         return (
-            <CountryCard key={name} info={{ name, population, region, capital, flags }} />
+            <CountryCard key={name} info={{ name, population, region, capital, flag }} />
         )
     })
 

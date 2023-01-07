@@ -1,11 +1,13 @@
 import { FC } from 'react'
-import { FilterType } from './SearcherFilter';
+import { useShopSelector, useShopDispatch } from '../shop/hooks'
+import { selectorsActions } from '../shop/selectorsSlice';
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 
-const Filter: FC<{ filter: FilterType }> = ({ filter }) => {
-    const { filterValue, setFilterValue } = filter
+const Filter: FC = () => {
+    const filterValue = useShopSelector(state => state.selectors.filter)
+    const dispatch = useShopDispatch()
 
     const regions: string[] = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
@@ -13,7 +15,10 @@ const Filter: FC<{ filter: FilterType }> = ({ filter }) => {
         <MenuItem key={region} value={region}>{region}</MenuItem>
     ))
 
-    const handleChange = (event: SelectChangeEvent<string>) => setFilterValue(event.target.value)
+    const handleChange = (event: SelectChangeEvent<string>) => {
+        const value = event.target.value
+        dispatch(selectorsActions.changeFilter({ value }))
+    }
 
     return (
         <div className='mt-6 sm:mt-0'>
