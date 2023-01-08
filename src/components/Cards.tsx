@@ -6,9 +6,9 @@ const Cards: FC = () => {
     const countriesToDisplay = useShopSelector(state => state.display.display)
 
     const countryCards = countriesToDisplay.map((country: any) => {
-        const { name, population, region, capital, flag } = country
+        const { alpha3Code } = country
         return (
-            <CountryCard key={name} info={{ name, population, region, capital, flag }} />
+            <CountryCard key={alpha3Code} info={country} />
         )
     })
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Searcher from './Searcher'
 import Filter from './Filter'
 

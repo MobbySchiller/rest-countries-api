@@ -3,16 +3,15 @@ import { Routes, Route } from 'react-router-dom'
 import { useShopSelector, useShopDispatch } from '../shop/hooks'
 import { displayActions } from '../shop/displaySlice';
 import Countries from '../pages/Countries'
+import SingleCountry from '../pages/SingleCountry';
 
 export const API: string = 'https://restcountries.com/v2/'
-export const FIELDS: string = '?fields=name,population,region,capital,flag'
+export const FIELDS: string = '?fields=name,population,region,subregion,capital,flag,nativeName,languages,currencies,borders,topLevelDomain,alpha3Code'
 
 const Main: FC = () => {
     const [allCountries, setAllCountries] = useState([])
-    // const [countriesToDisplay, setCountriesToDisplay] = useState([])
     const searchValue = useShopSelector(state => state.selectors.search)
     const filterValue = useShopSelector(state => state.selectors.filter)
-    const countriesToDisplay = useShopSelector(state => state.display.display)
     const dispatch = useShopDispatch()
 
     const getAllCountries = async () => {
@@ -30,7 +29,7 @@ const Main: FC = () => {
         let toDisplay = allCountries
         if (searchValue !== '') {
             const enteredLetters = searchValue.toLowerCase()
-            toDisplay = toDisplay.filter(country => {
+            toDisplay = toDisplay.filter((country: any) => {
                 const countryLower = country.name.toLowerCase()
                 return countryLower.includes(enteredLetters)
             })
@@ -38,7 +37,7 @@ const Main: FC = () => {
         if (filterValue === '' || filterValue === 'All') {
             dispatch(displayActions.changeDisplay({ data: toDisplay }))
         } else {
-            toDisplay = toDisplay.filter(country => country.region === filterValue)
+            toDisplay = toDisplay.filter((country: any) => country.region === filterValue)
             dispatch(displayActions.changeDisplay({ data: toDisplay }))
         }
     }
@@ -51,10 +50,20 @@ const Main: FC = () => {
         getSelectedCountries()
     }, [searchValue, filterValue])
 
+    const routes = allCountries.map(country => {
+        const { alpha3Code } = country
+        return (
+            <Route key={alpha3Code} path={`/${alpha3Code}`} element={<SingleCountry info={country} />} />
+        )
+    })
+
     return (
-        <Routes>
-            <Route path='/' element={<Countries />} />
-        </Routes>
+        <main className='max-w-6xl mx-auto px-4'>
+            <Routes>
+                <Route path='/' element={<Countries />} />
+                {routes}
+            </Routes>
+        </main>
     )
 }
 
