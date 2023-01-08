@@ -7,8 +7,6 @@ import Countries from '../pages/Countries'
 export const API: string = 'https://restcountries.com/v2/'
 export const FIELDS: string = '?fields=name,population,region,capital,flag'
 
-
-
 const Main: FC = () => {
     const [allCountries, setAllCountries] = useState([])
     // const [countriesToDisplay, setCountriesToDisplay] = useState([])
@@ -24,7 +22,8 @@ const Main: FC = () => {
         }
         const data = await response.json()
         dispatch(displayActions.changeDisplay({ data }))
-        return setAllCountries(data)
+        setAllCountries(data)
+        return
     }
 
     const getSelectedCountries = () => {
