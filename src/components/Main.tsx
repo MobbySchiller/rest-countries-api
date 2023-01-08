@@ -9,6 +9,7 @@ export const API: string = 'https://restcountries.com/v2/'
 export const FIELDS: string = '?fields=name,population,region,subregion,capital,flag,nativeName,languages,currencies,borders,topLevelDomain,alpha3Code'
 
 const Main: FC = () => {
+    const [isLoaded, setIsLoaded] = useState<boolean>(false)
     const [allCountries, setAllCountries] = useState([])
     const searchValue = useShopSelector(state => state.selectors.search)
     const filterValue = useShopSelector(state => state.selectors.filter)
@@ -22,6 +23,7 @@ const Main: FC = () => {
         const data = await response.json()
         dispatch(displayActions.changeDisplay({ data }))
         setAllCountries(data)
+        setIsLoaded(true)
         return
     }
 
@@ -60,7 +62,7 @@ const Main: FC = () => {
     return (
         <main className='max-w-6xl mx-auto px-4'>
             <Routes>
-                <Route path='/' element={<Countries />} />
+                <Route path='/' element={<Countries isLoaded={isLoaded} />} />
                 {routes}
             </Routes>
         </main>
