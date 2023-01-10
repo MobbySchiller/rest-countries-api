@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -6,11 +6,16 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 const Header: FC = () => {
     const [isLightMode, setIsLightMode] = useState<boolean>(true)
 
-    const handleDisplayMode = () => {
+    useEffect(() => {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setIsLightMode(false)
+        }
+    }, [])
+
+    useEffect(() => {
         const dom = document.querySelector('html')
         dom?.classList.toggle('dark')
-        setIsLightMode(!isLightMode)
-    }
+    }, [isLightMode])
 
     return (
         <header
@@ -25,9 +30,9 @@ const Header: FC = () => {
                 </NavLink>
                 <button
                     className='font-semibold flex items-center'
-                    onClick={handleDisplayMode}>
-                    {isLightMode ? <LightModeIcon /> : <DarkModeIcon />}
-                    <span className='pl-1'>{isLightMode ? 'Light Mode' : 'Dark Mode'}</span>
+                    onClick={() => setIsLightMode(!isLightMode)}>
+                    {isLightMode ? <DarkModeIcon /> : <LightModeIcon />}
+                    <span className='pl-1'>{isLightMode ? 'Dark Mode' : 'Light Mode'}</span>
                 </button>
             </div>
         </header >

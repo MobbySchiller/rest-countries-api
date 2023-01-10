@@ -12,8 +12,8 @@ const LoaderCard: FC = () => {
                 </div>
                 <div className='p-5'>
                     <div className='block w-32 h-3 mb-6 rounded-xl bg-light-border'></div>
-                    <div className='block w-28 h-3 mb-3 rounded-xl bg-light-border'></div>
-                    <div className='block w-28 h-3 mb-3 rounded-xl bg-light-border'></div>
+                    <div className='block w-36 h-3 mb-3 rounded-xl bg-light-border'></div>
+                    <div className='block w-24 h-3 mb-3 rounded-xl bg-light-border'></div>
                     <div className='block w-28 h-3 rounded-xl bg-light-border'></div>
                 </div>
             </div>
