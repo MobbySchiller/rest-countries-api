@@ -13,6 +13,10 @@ const CardsLoader: FC = () => {
             <CardLoader />
             <CardLoader />
             <CardLoader />
+            <CardLoader />
+            <CardLoader />
+            <CardLoader />
+            <CardLoader />
         </div>
     )
 }
